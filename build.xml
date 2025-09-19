@@ -10,6 +10,23 @@
 <project name="PROG5121POE" default="default" basedir=".">
     <description>Builds, tests, and runs the project PROG5121POE.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="test" depends="compile">
+    <junit printsummary="true" haltonfailure="false">
+        <classpath>
+            <pathelement path="${build.classes.dir}"/>
+            <pathelement path="${build.test.classes.dir}"/>
+            <fileset dir="lib">
+                <include name="junit-4*.jar"/>
+            </fileset>
+        </classpath>
+        <batchtest todir="${build.test.results.dir}">
+            <fileset dir="test">
+                <include name="**/*Test.java"/>
+            </fileset>
+        </batchtest>
+    </junit>
+</target>
+
 
 
     <!--
